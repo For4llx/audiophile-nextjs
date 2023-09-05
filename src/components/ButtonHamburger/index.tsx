@@ -1,9 +1,20 @@
 import BaseIconHamburger from "../BaseIconHamburger";
 import styles from "./ButtonHamburger.module.scss";
 
-const ButtonHamburger: React.FC = () => {
+interface IButtonHamburger {
+  menuRef: any;
+}
+
+const ButtonHamburger: React.FC<IButtonHamburger> = ({ menuRef }) => {
   return (
-    <button className={styles.container}>
+    <button
+      onClick={() =>
+        menuRef.current?.open
+          ? menuRef.current?.close()
+          : menuRef.current?.showModal()
+      }
+      className={styles.container}
+    >
       <BaseIconHamburger />
     </button>
   );
